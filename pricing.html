@@ -14,13 +14,13 @@
     }
 
     .pricing-container {
-      max-width: 900px; /* Slightly narrowed to keep 2 cards looking proportional */
+      max-width: 900px; /* Kept narrow for a clean 2-card layout */
       margin: 0 auto;
     }
 
     .pricing-header {
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
 
     .pricing-header h1 {
@@ -34,6 +34,31 @@
       color: #666;
       max-width: 600px;
       margin: 0 auto;
+    }
+
+    /* Intro Offer Banner Styling */
+    .intro-banner {
+      background-color: #f0f7ff;
+      border-left: 4px solid #007bff;
+      padding: 20px;
+      border-radius: 6px;
+      margin-bottom: 40px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .intro-banner h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.15rem;
+      color: #004085;
+      font-weight: 600;
+    }
+
+    .intro-banner p {
+      margin: 0;
+      font-size: 1rem;
+      color: #004085;
+      line-height: 1.5;
     }
 
     /* Pricing Cards Grid */
@@ -180,6 +205,12 @@
         <p>Direct, transparent pricing for clinical massage therapy and performance recovery. No hidden fees, no high-pressure contracts.</p>
       </div>
 
+      <!-- First-Time Client Special Banner -->
+      <div class="intro-banner">
+        <h3>First-Time Client Special</h3>
+        <p>Receive a <strong>complimentary clinical mobility assessment</strong> and <strong>$20 off</strong> your initial 60 or 90-minute session. Discount applied automatically at checkout.</p>
+      </div>
+
       <div class="pricing-grid">
         
         <!-- 60 Minutes Card -->
@@ -227,7 +258,7 @@
 
       </div>
 
-      <!-- Single Cancellation Policy Section -->
+      <!-- Cancellation Policy Section -->
       <div class="pricing-policies">
         <h2>Cancellation Policy</h2>
         <p>Your appointment time is reserved exclusively for you. Cancellations or changes made with less than 24 hours' notice are subject to a fee up to the full value of the scheduled service.</p>
