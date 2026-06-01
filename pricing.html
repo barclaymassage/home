@@ -150,31 +150,23 @@
     /* Policy Section Styling */
     .pricing-policies {
       border-top: 1px solid #e0e0e0;
-      padding-top: 50px;
+      padding-top: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .pricing-policies h2 {
-      text-align: center;
-      font-size: 1.8rem;
-      margin-bottom: 40px;
-    }
-
-    .policy-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .policy-item h3 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
+      font-size: 1.6rem;
+      margin-bottom: 15px;
       color: #111;
     }
 
-    .policy-item p {
-      font-size: 0.95rem;
+    .pricing-policies p {
+      font-size: 1rem;
       color: #555;
       line-height: 1.6;
+      margin: 0;
     }
   </style>
 </head>
@@ -182,7 +174,7 @@
 
   <section class="pricing-section">
     <div class="pricing-container">
-      
+       
       <div class="pricing-header">
         <h1>Investment in Your Recovery</h1>
         <p>Direct, transparent pricing for clinical massage therapy and performance recovery. No hidden fees, no high-pressure contracts.</p>
@@ -190,6 +182,7 @@
 
       <div class="pricing-grid">
         
+        <!-- 60 Minutes Card -->
         <div class="price-card">
           <div class="card-header">
             <h2>60 Minutes</h2>
@@ -210,6 +203,7 @@
           </div>
         </div>
 
+        <!-- 90 Minutes Card -->
         <div class="price-card popular">
           <div class="card-header">
             <span class="badge">Most Requested</span>
@@ -231,6 +225,7 @@
           </div>
         </div>
 
+        <!-- 120 Minutes Card -->
         <div class="price-card">
           <div class="card-header">
             <h2>120 Minutes</h2>
@@ -253,22 +248,10 @@
 
       </div>
 
+      <!-- Single Cancellation Policy Section -->
       <div class="pricing-policies">
-        <h2>Frequently Asked Questions & Policies</h2>
-        <div class="policy-grid">
-          <div class="policy-item">
-            <h3>What is included in the rate?</h3>
-            <p>Every session is completely tailored to your clinical assessment. Deep tissue work, trigger point therapy, and customized stretching are fully integrated into your time block at no additional charge.</p>
-          </div>
-          <div class="policy-item">
-            <h3>What is your cancellation policy?</h3>
-            <p>Your appointment time is reserved exclusively for you. Cancellations or changes made with less than 24 hours' notice are subject to a fee up to the full value of the scheduled service.</p>
-          </div>
-          <div class="policy-item">
-            <h3>Do you accept HSA/FSA cards?</h3>
-            <p>Yes. If your insurance plan covers massage therapy for medical necessity or injury rehabilitation, you can use your Health Savings Account (HSA) or Flexible Spending Account (FSA) card at checkout. A detailed receipt with appropriate standard billing codes can be provided upon request.</p>
-          </div>
-        </div>
+        <h2>Cancellation Policy</h2>
+        <p>Your appointment time is reserved exclusively for you. Cancellations or changes made with less than 24 hours' notice are subject to a fee up to the full value of the scheduled service.</p>
       </div>
 
     </div>
