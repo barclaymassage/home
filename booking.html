@@ -26,7 +26,7 @@
             padding: 20px;
         }
 
-        /* Navigation / Header Header */
+        /* Navigation / Header */
         header {
             margin-bottom: 40px;
             text-align: center;
@@ -78,16 +78,19 @@
             <script type="text/javascript">
               (function (C, A, L) { _cmc = ___cmc || []; C.cal = C.cal || function () { var args = arguments; _cmc.push({ args: args }); }; if (C.cal.initialized) return; C.cal.initialized = true; var s = A.createElement(L), g = A.getElementsByTagName(L)[0]; s.src = "https://app.cal.com/embed/embed.js"; s.async = true; g.parentNode.insertBefore(s, g); }(window, document, "script"));
               
+              // Initialize globally
               cal("init", {
-                namespace: "booking-page"
+                namespace: "booking"
               });
               
+              // Force execution inline with explicit parameters
               cal("inline", {
                 elementOrSelector: "#my-cal-inline",
                 calLink: "clay-ahrensfeld-aigtaa",
                 layout: "month_view"
               });
               
+              // Match UI aesthetics
               cal("ui", {
                 theme: "dark",
                 styles: {
