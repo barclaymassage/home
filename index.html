@@ -123,28 +123,15 @@
             overflow: hidden;
         }
 
-        .contact-card:hover:not(.booking-soon) {
+        .contact-card:hover {
             border-color: var(--accent);
             transform: translateX(8px);
         }
 
-        .booking-soon {
-            background: #f8fafc;
-            border: 2px dashed #cbd5e0;
-            cursor: default;
-        }
-
-        .status-badge {
-            position: absolute;
-            right: -15px;
-            top: 8px;
-            background: var(--accent);
-            color: white;
-            font-size: 8px;
-            font-weight: 900;
-            padding: 3px 20px;
-            transform: rotate(15deg);
-            letter-spacing: 1px;
+        /* Live Highlight Card for Booking */
+        .booking-live {
+            background: #f0fdf4;
+            border-color: var(--accent);
         }
 
         .icon { 
@@ -173,7 +160,10 @@
             font-weight: 500;
         }
 
-        .booking-soon .contact-subtext { color: var(--accent); font-weight: 800; font-size: 11px; }
+        .booking-live .contact-subtext { 
+            color: var(--accent); 
+            font-weight: 800; 
+        }
 
         .footer-info { 
             margin-top: 50px; 
@@ -213,14 +203,13 @@
         </p>
 
         <div class="contact-grid">
-            <div class="contact-card booking-soon">
-                <div class="icon">🚀</div>
+            <a href="booking.html" class="contact-card booking-live">
+                <div class="icon">📅</div>
                 <div class="info-block">
                     <span class="contact-label">Online Booking</span>
-                    <span class="contact-subtext">SYSTEM LAUNCHING SOON</span>
+                    <span class="contact-subtext">Book An Appointment</span>
                 </div>
-                <div class="status-badge">COMING 2026</div>
-            </div>
+            </a>
 
             <a href="pricing.html" class="contact-card">
                 <div class="icon">💵</div>
