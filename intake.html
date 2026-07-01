@@ -21,17 +21,20 @@
         .location { letter-spacing: 4px; color: #95a5a6; font-size: 13px; font-weight: bold; margin-top: 5px; }
         .id-warning { background: #fff5f5; color: #c53030; border: 1px solid #feb2b2; padding: 12px; border-radius: 5px; text-align: center; font-weight: bold; margin-bottom: 25px; font-size: 13px; }
         h3 { background: #f8f9fa; color: var(--steel); padding: 8px 12px; text-transform: uppercase; font-size: 12px; margin-top: 25px; border-left: 5px solid var(--accent); font-weight: 800; letter-spacing: 0.5px; }
-        .row { display: flex; gap: 15px; margin-bottom: 12px; }
-        .field { flex: 1; }
+        
+        /* Block rows from being sliced in half */
+        .row { display: flex; gap: 15px; margin-bottom: 12px; break-inside: avoid; }
+        .field { flex: 1; break-inside: avoid; }
+        
         label { display: block; font-weight: 700; font-size: 11px; margin-bottom: 4px; color: var(--steel); text-transform: uppercase; letter-spacing: 0.3px; }
         input[type="text"], input[type="email"], input[type="date"], select, textarea { width: 100%; padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; background-color: #fafafa; color: var(--text-dark); }
         input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus, select:focus, textarea:focus { border-color: var(--accent); outline: none; background-color: #fff; }
         
-        .check-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 8px; }
+        .check-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 8px; break-inside: avoid; }
         .check-item { font-size: 12px; display: flex; align-items: center; background: #fafafa; padding: 6px 8px; border-radius: 4px; border: 1px solid #e2e8f0; color: var(--text-dark); font-weight: 500; }
         input[type="checkbox"] { margin-right: 8px; width: 14px; height: 14px; accent-color: var(--accent); flex-shrink: 0; }
         
-        table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12px; break-inside: avoid; }
         th, td { border: 1px solid #e2e8f0; padding: 8px 10px; text-align: left; }
         th { background: #f8f9fa; color: #718096; text-transform: uppercase; font-size: 10px; font-weight: 800; }
         td { color: var(--text-dark); font-weight: 500; }
@@ -55,8 +58,8 @@
 
         .no-export { display: none !important; }
 
-        /* Force Section 4 to consistently start clean on Page 2 */
-        .page-break { page-break-before: always; break-before: page; margin-top: 15px !important; }
+        /* Force a clean page break exactly at Section 3 */
+        .page-break { page-break-before: always; break-before: page; margin-top: 20px !important; }
 
         /* Mobile specific view overrides */
         @media (max-width: 600px) {
@@ -67,23 +70,17 @@
             .form-container { padding: 20px; }
         }
 
-        /* ULTRA TIGHT PDF EXPORT MODE */
+        /* HARD VIEWPORT FOR PDF GENERATION */
         .pdf-render-mode {
             width: 750px !important;
-            padding: 25px 35px !important;
+            padding: 30px !important;
             box-shadow: none !important;
             border: none !important;
         }
-        .pdf-render-mode .row { flex-direction: row !important; gap: 15px !important; margin-bottom: 8px !important; }
+        .pdf-render-mode .row { flex-direction: row !important; gap: 15px !important; margin-bottom: 12px !important; }
         .pdf-render-mode .field { margin-bottom: 0 !important; }
-        .pdf-render-mode h3 { margin-top: 14px !important; padding: 6px 10px !important; }
-        .pdf-render-mode .check-grid { grid-template-columns: 1fr 1fr 1fr !important; gap: 6px !important; margin-top: 4px !important; }
-        .pdf-render-mode .check-item { padding: 4px 6px !important; }
-        .pdf-render-mode table { margin-top: 8px !important; }
-        .pdf-render-mode th, .pdf-render-mode td { padding: 5px 8px !important; }
-        .pdf-render-mode .policy-list li { margin-bottom: 5px !important; }
-        .pdf-render-mode .sig-row { flex-direction: row !important; align-items: flex-end !important; gap: 15px !important; margin-top: 15px !important; }
-        .pdf-render-mode .footer { margin-top: 20px !important; padding-top: 10px !important; }
+        .pdf-render-mode .check-grid { grid-template-columns: 1fr 1fr 1fr !important; gap: 8px !important; }
+        .pdf-render-mode .sig-row { flex-direction: row !important; align-items: flex-end !important; gap: 15px !important; }
     </style>
 </head>
 <body>
@@ -130,7 +127,8 @@
     </div>
     <div class="field" style="margin-top:12px;"><label>Current Injuries, Medical History, or Medications</label><textarea rows="2"></textarea></div>
 
-    <h3>3. Massage & Lifestyle Preferences</h3>
+    <!-- CLEAN PAGE BREAK MOVED HERE TO PREVENT CLIPPING -->
+    <h3 class="page-break">3. Massage & Lifestyle Preferences</h3>
     <div class="row">
         <div class="field">
             <label>Primary Goal</label>
@@ -163,8 +161,7 @@
         <div class="field"><label>Areas to Strictly Avoid</label><input type="text"></div>
     </div>
 
-    <!-- FORCE CLEAN PAGE BREAK HERE FOR THE PDF -->
-    <h3 class="page-break">4. Area Consent</h3>
+    <h3>4. Area Consent</h3>
     <table>
         <tr><th>Body Area</th><th class="center" style="width: 70px;">Yes</th><th class="center" style="width: 70px;">No</th></tr>
         <tr><td>Head & Face</td><td class="center"><input type="radio" name="r1"></td><td class="center"><input type="radio" name="r1"></td></tr>
@@ -211,7 +208,7 @@
         element.classList.add('pdf-render-mode');
 
         const opt = {
-            margin:       [0.3, 0.3, 0.3, 0.3], // Slightly tighter margins to maximize printable canvas
+            margin:       [0.4, 0.4, 0.4, 0.4],
             filename:     'Barclay_Intake_' + clientName.replace(/\s+/g, '_') + '.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { 
