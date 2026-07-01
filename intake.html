@@ -7,45 +7,77 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.5; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
-        .form-container { background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-top: 10px solid #2c3e50; }
-        .header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
-        .biz-name { font-size: 30px; font-weight: 800; text-transform: uppercase; margin: 0; color: #2c3e50; }
-        .location { letter-spacing: 4px; color: #95a5a6; font-size: 14px; font-weight: bold; }
-        .id-warning { background: #fff5f5; color: #c53030; border: 1px solid #feb2b2; padding: 15px; border-radius: 5px; text-align: center; font-weight: bold; margin-bottom: 30px; font-size: 14px; }
-        h3 { background: #f8f9fa; color: #2c3e50; padding: 10px 15px; text-transform: uppercase; font-size: 14px; margin-top: 30px; border-left: 5px solid #2c3e50; }
-        .row { display: flex; gap: 20px; margin-bottom: 15px; }
+        :root {
+            --steel: #1a202c;
+            --accent: #27ae60;
+            --text-dark: #2d3748;
+            --bg-light: #f4f7f6;
+        }
+
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.4; color: var(--text-dark); max-width: 800px; margin: 0 auto; padding: 20px; background-color: var(--bg-light); }
+        .form-container { background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-top: 10px solid var(--steel); box-sizing: border-box; }
+        .header { text-align: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .biz-name { font-size: 28px; font-weight: 800; text-transform: uppercase; margin: 0; color: var(--steel); letter-spacing: -0.5px; }
+        .location { letter-spacing: 4px; color: #95a5a6; font-size: 13px; font-weight: bold; margin-top: 5px; }
+        .id-warning { background: #fff5f5; color: #c53030; border: 1px solid #feb2b2; padding: 12px; border-radius: 5px; text-align: center; font-weight: bold; margin-bottom: 25px; font-size: 13px; }
+        h3 { background: #f8f9fa; color: var(--steel); padding: 8px 12px; text-transform: uppercase; font-size: 12px; margin-top: 25px; border-left: 5px solid var(--accent); font-weight: 800; letter-spacing: 0.5px; }
+        .row { display: flex; gap: 15px; margin-bottom: 12px; }
         .field { flex: 1; }
-        label { display: block; font-weight: 700; font-size: 12px; margin-bottom: 5px; color: #444; }
-        input[type="text"], input[type="email"], input[type="date"], select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px; }
-        .check-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .check-item { font-size: 13px; display: flex; align-items: center; background: #fafafa; padding: 8px; border-radius: 4px; border: 1px solid #eee; }
-        input[type="checkbox"] { margin-right: 10px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; }
-        th, td { border: 1px solid #e0e0e0; padding: 12px; text-align: left; }
-        th { background: #f8f9fa; color: #7f8c8d; }
+        label { display: block; font-weight: 700; font-size: 11px; margin-bottom: 4px; color: var(--steel); text-transform: uppercase; letter-spacing: 0.3px; }
+        input[type="text"], input[type="email"], input[type="date"], select, textarea { width: 100%; padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; background-color: #fafafa; color: var(--text-dark); }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus, select:focus, textarea:focus { border-color: var(--accent); outline: none; background-color: #fff; }
+        
+        .check-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 8px; }
+        .check-item { font-size: 12px; display: flex; align-items: center; background: #fafafa; padding: 6px 8px; border-radius: 4px; border: 1px solid #e2e8f0; color: var(--text-dark); font-weight: 500; }
+        input[type="checkbox"] { margin-right: 8px; width: 14px; height: 14px; accent-color: var(--accent); flex-shrink: 0; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12px; }
+        th, td { border: 1px solid #e2e8f0; padding: 8px 10px; text-align: left; }
+        th { background: #f8f9fa; color: #718096; text-transform: uppercase; font-size: 10px; font-weight: 800; }
+        td { color: var(--text-dark); font-weight: 500; }
         .center { text-align: center; }
-        .policy-list { list-style: none; padding: 0; font-size: 13px; }
-        .policy-list li { margin-bottom: 8px; display: flex; align-items: flex-start; }
-        .footer { text-align: center; margin-top: 40px; font-size: 11px; color: #bdc3c7; border-top: 1px solid #eee; padding-top: 20px; }
-        .sig-row { display: flex; gap: 20px; margin-top: 30px; align-items: flex-end; }
+        input[type="radio"] { width: 14px; height: 14px; accent-color: var(--accent); }
+        
+        .policy-list { list-style: none; padding: 0; font-size: 12px; margin: 0; }
+        .policy-list li { margin-bottom: 8px; display: flex; align-items: flex-start; line-height: 1.4; }
+        .footer { text-align: center; margin-top: 30px; font-size: 10px; color: #a0aec0; border-top: 1px solid #eee; padding-top: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .sig-row { display: flex; gap: 15px; margin-top: 25px; align-items: flex-end; }
         .sig-field { flex: 3; }
         .date-field { flex: 1.5; }
 
         .submit-btn { 
-            display: block; width: 100%; padding: 15px; background-color: #27ae60; color: white; 
-            border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 40px;
+            display: block; width: 100%; padding: 16px; background-color: var(--accent); color: white; 
+            border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 35px;
+            box-shadow: 0 4px 6px rgba(39, 174, 96, 0.2); transition: background 0.2s ease;
         }
         .submit-btn:hover { background-color: #2ecc71; }
 
-        /* Hides the button when the PDF is being generated */
         .no-export { display: none !important; }
 
-        @media print {
-            .submit-btn, .id-warning { display: none !important; }
-            body { background-color: white; padding: 0; }
-            .form-container { box-shadow: none; border: none; padding: 0; }
+        /* Force Section 4 to consistently start clean on Page 2 */
+        .page-break { page-break-before: always; break-before: page; margin-top: 30px; }
+
+        /* Mobile specific view overrides */
+        @media (max-width: 600px) {
+            .row { flex-direction: column; gap: 12px; margin-bottom: 0; }
+            .field { margin-bottom: 12px; }
+            .check-grid { grid-template-columns: 1fr; gap: 6px; }
+            .sig-row { flex-direction: column; align-items: stretch; gap: 12px; }
+            .form-container { padding: 20px; }
         }
+
+        /* HARD WIRED DESKTOP SIMULATION CSS CLASS FOR HTML2PDF */
+        .pdf-render-mode {
+            width: 750px !important;
+            padding: 30px !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+        .pdf-render-mode .row { flex-direction: row !important; gap: 15px !important; margin-bottom: 12px !important; }
+        .pdf-render-mode .field { margin-bottom: 0 !important; }
+        .pdf-render-mode .check-grid { grid-template-columns: 1fr 1fr 1fr !important; gap: 8px !important; }
+        .pdf-render-mode .sig-row { flex-direction: row !important; align-items: flex-end !important; gap: 15px !important; }
     </style>
 </head>
 <body>
@@ -61,18 +93,18 @@
     </div>
 
     <h3>1. Client Information</h3>
-    <div class="field" style="margin-bottom:15px;"><label>Full Name</label><input type="text" id="clientName" placeholder="First Last"></div>
-    <div class="field" style="margin-bottom:15px;"><label>Street Address</label><input type="text"></div>
+    <div class="field" style="margin-bottom:12px;"><label>Full Name</label><input type="text" id="clientName" placeholder="First Last"></div>
+    <div class="field" style="margin-bottom:12px;"><label>Street Address</label><input type="text"></div>
     <div class="row">
         <div class="field"><label>Phone Number</label><input type="text"></div>
         <div class="field"><label>Date of Birth</label><input type="date"></div>
     </div>
     <div class="row">
         <div class="field"><label>Email Address</label><input type="email"></div>
-        <div class="field"><label>Emergency Contact</label><input type="text"></div>
+        <div class="field"><label>Emergency Contact & Phone</label><input type="text"></div>
     </div>
 
-    <h3>2. Health Conditions</h3>
+    <h3>2. Health & Structural Conditions</h3>
     <div class="check-grid">
         <div class="check-item"><input type="checkbox"> High Blood Pressure</div>
         <div class="check-item"><input type="checkbox"> Diabetes</div>
@@ -80,42 +112,52 @@
         <div class="check-item"><input type="checkbox"> Heart Condition</div>
         <div class="check-item"><input type="checkbox"> Arthritis</div>
         <div class="check-item"><input type="checkbox"> Recent Surgery</div>
-        <div class="check-item"><input type="checkbox"> Numbness/Tingling</div>
+        <div class="check-item"><input type="checkbox"> Numbness / Tingling</div>
         <div class="check-item"><input type="checkbox"> Easy Bruising</div>
         <div class="check-item"><input type="checkbox"> Allergies</div>
+        <div class="check-item"><input type="checkbox"> Hip Flexor / Adductor Tightness</div>
+        <div class="check-item"><input type="checkbox"> Sciatica / Lower Back Stiffness</div>
+        <div class="check-item"><input type="checkbox"> Shoulder / Mobility Restriction</div>
     </div>
-    <div class="field" style="margin-top:15px;"><label>Other / Medications</label><textarea rows="1"></textarea></div>
+    <div class="field" style="margin-top:12px;"><label>Current Injuries, Medical History, or Medications</label><textarea rows="2"></textarea></div>
 
-    <h3>3. Massage Preferences</h3>
+    <h3>3. Massage & Training Preferences</h3>
     <div class="row">
         <div class="field">
             <label>Primary Goal</label>
             <select>
                 <option value="">-- Select Goal --</option>
-                <option value="relaxation">Relaxation</option>
-                <option value="pain">Pain Relief</option>
-                <option value="recovery">Injury Recovery</option>
-                <option value="sports">Sports Performance</option>
+                <option value="sports">Sports Performance / Volume Recovery</option>
+                <option value="pain">Pain Relief & Structural Work</option>
+                <option value="recovery">Injury Rehabilitation</option>
+                <option value="relaxation">General Relaxation</option>
             </select>
         </div>
         <div class="field">
-            <label>Pressure</label>
+            <label>Preferred Pressure Level</label>
             <select>
-                <option value="light">Light</option>
-                <option value="medium">Medium</option>
-                <option value="firm">Firm</option>
                 <option value="deep">Deep Tissue</option>
+                <option value="firm">Firm</option>
+                <option value="medium">Medium</option>
+                <option value="light">Light</option>
             </select>
         </div>
     </div>
     <div class="row">
-        <div class="field"><label>Areas of Focus</label><input type="text"></div>
-        <div class="field"><label>Areas to Avoid</label><input type="text"></div>
+        <div class="field">
+            <label>Training Style / Activity Level (e.g., Bodybuilding, Running, None)</label>
+            <input type="text" placeholder="e.g., Weightlifting 4x a week, manual labor, etc.">
+        </div>
+    </div>
+    <div class="row">
+        <div class="field"><label>Specific Areas of Focus / Chronic Tension</label><input type="text"></div>
+        <div class="field"><label>Areas to Strictly Avoid</label><input type="text"></div>
     </div>
 
-    <h3>4. Area Consent</h3>
+    <!-- FORCE CLEAN PAGE BREAK HERE FOR THE PDF -->
+    <h3 class="page-break">4. Area Consent</h3>
     <table>
-        <tr><th>Body Area</th><th class="center">Yes</th><th class="center">No</th></tr>
+        <tr><th>Body Area</th><th class="center" style="width: 70px;">Yes</th><th class="center" style="width: 70px;">No</th></tr>
         <tr><td>Head & Face</td><td class="center"><input type="radio" name="r1"></td><td class="center"><input type="radio" name="r1"></td></tr>
         <tr><td>Neck & Shoulders</td><td class="center"><input type="radio" name="r2"></td><td class="center"><input type="radio" name="r2"></td></tr>
         <tr><td>Back</td><td class="center"><input type="radio" name="r3"></td><td class="center"><input type="radio" name="r3"></td></tr>
@@ -126,17 +168,17 @@
         <tr><td>Feet</td><td class="center"><input type="radio" name="r8"></td><td class="center"><input type="radio" name="r8"></td></tr>
     </table>
 
-    <h3>5. Policies & Consent</h3>
+    <h3>5. Policies & Informed Consent</h3>
     <ul class="policy-list">
-        <li><input type="checkbox"> I understand cancellation/late arrival policies.</li>
-        <li><input type="checkbox"> I confirm my identity and accuracy of information.</li>
-        <li><input type="checkbox"> I understand massage is not medical care.</li>
-        <li><input type="checkbox"> I understand mandatory draping (FL 64B7-26).</li>
-        <li><input type="checkbox"> I understand inappropriate behavior results in termination.</li>
+        <li><input type="checkbox"> <span>I understand the cancellation, late arrival, and card-hold policies.</span></li>
+        <li><input type="checkbox"> <span>I confirm my identity and verify that all health information is accurate.</span></li>
+        <li><input type="checkbox"> <span>I understand that massage therapy is for structural recovery and is not medical care.</span></li>
+        <li><input type="checkbox"> <span>I understand that mandatory professional draping is maintained at all times (FL 64B7-26).</span></li>
+        <li><input type="checkbox"> <span>I understand that any illicit or inappropriate behavior results in immediate session termination.</span></li>
     </ul>
 
     <div class="sig-row">
-        <div class="sig-field"><label>Digital Signature</label><input type="text" placeholder="Full Name"></div>
+        <div class="sig-field"><label>Digital Signature (Type Full Name)</label><input type="text" placeholder="Full Name"></div>
         <div class="date-field"><label>Date Signed</label><input type="date" id="currentDate"></div>
     </div>
 
@@ -148,7 +190,6 @@
 </div>
 
 <script>
-    // Set today's date
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('currentDate').value = today;
 
@@ -157,25 +198,28 @@
         const clientName = document.getElementById('clientName').value || 'Client';
         const button = document.getElementById('dl-button');
         
-        // Hide button during PDF generation
         button.classList.add('no-export');
+        
+        // Trick html2pdf: temporarily apply standard width overrides so mobile users don't export squished viewports
+        element.classList.add('pdf-render-mode');
 
         const opt = {
-            margin:       [0.3, 0.3, 0.5, 0.3],
-            filename:     'Barclay_Intake_' + clientName + '.pdf',
+            margin:       [0.3, 0.4, 0.4, 0.4],
+            filename:     'Barclay_Intake_' + clientName.replace(/\s+/g, '_') + '.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { 
                 scale: 2, 
                 useCORS: true, 
                 letterRendering: true,
-                scrollY: 0 
+                scrollY: 0
             },
             jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
-            pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
+            pagebreak:    { mode: ['css', 'legacy'] } // Strictly relies on our custom CSS class break
         };
 
-        // Run download and then show button again
         html2pdf().set(opt).from(element).save().then(() => {
+            // Strip the export class away immediately so the web screen reverts back smoothly
+            element.classList.remove('pdf-render-mode');
             button.classList.remove('no-export');
         });
     }
