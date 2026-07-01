@@ -82,7 +82,6 @@
             align-items: center;
             padding: 40px;
             background: rgba(0,0,0,0.2);
-            align-self: stroke;
         }
 
         .lmt-photo { 
@@ -176,6 +175,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Container for internal text alignment */
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
         .contact-label {
@@ -184,7 +191,6 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #ffffff;
-            margin-bottom: 6px;
         }
 
         .contact-subtext {
@@ -224,9 +230,18 @@
             .text-column { padding: 30px; }
             .bio-header { border-left: none; padding-left: 0; }
             .promo-badge { justify-content: center; }
-            .action-strip { grid-template-columns: 1fr; }
-            .contact-card { flex-direction: row; text-align: left; padding: 18px; }
+            
+            /* Stacking fix for phone layouts seen in 1000014746.jpg */
+            .action-strip { grid-template-columns: 1fr; gap: 12px; }
+            .contact-card { 
+                flex-direction: row; 
+                text-align: left; 
+                padding: 16px 20px; 
+                align-items: center;
+                justify-content: flex-start;
+            }
             .icon { margin-bottom: 0; margin-right: 20px; }
+            .text-container { gap: 2px; }
         }
     </style>
 </head>
@@ -262,32 +277,42 @@
     <nav class="action-strip">
         <a href="booking.html" class="contact-card booking-live">
             <div class="icon">📅</div>
-            <span class="contact-label">Online Booking</span>
-            <span class="contact-subtext">Book Appointment<br>($0 Upfront)</span>
+            <div class="text-container">
+                <span class="contact-label">Online Booking</span>
+                <span class="contact-subtext">Book Appointment ($0 Upfront)</span>
+            </div>
         </a>
 
         <a href="pricing.html" class="contact-card">
             <div class="icon">💵</div>
-            <span class="contact-label">Rates Menu</span>
-            <span class="contact-subtext">60 & 90-Minute<br>Deep Tissue</span>
+            <div class="text-container">
+                <span class="contact-label">Rates Menu</span>
+                <span class="contact-subtext">60 & 90-Minute Deep Tissue</span>
+            </div>
         </a>
 
         <a href="mailto:barclaymassage@gmail.com?subject=Booking Inquiry" class="contact-card">
             <div class="icon">✉️</div>
-            <span class="contact-label">Email Us</span>
-            <span class="contact-subtext">barclaymassage<br>@gmail.com</span>
+            <div class="text-container">
+                <span class="contact-label">Email Us</span>
+                <span class="contact-subtext">barclaymassage@gmail.com</span>
+            </div>
         </a>
 
         <a href="tel:4078672207" class="contact-card">
             <div class="icon">📱</div>
-            <span class="contact-label">Call / Text</span>
-            <span class="contact-subtext">(407) 867-2207</span>
+            <div class="text-container">
+                <span class="contact-label">Call / Text</span>
+                <span class="contact-subtext">(407) 867-2207</span>
+            </div>
         </a>
         
         <a href="intake.html" class="contact-card">
             <div class="icon">📋</div>
-            <span class="contact-label">New Clients</span>
-            <span class="contact-subtext">Start Online<br>Intake Form</span>
+            <div class="text-container">
+                <span class="contact-label">New Clients</span>
+                <span class="contact-subtext">Start Online Intake Form</span>
+            </div>
         </a>
     </nav>
 </div>
