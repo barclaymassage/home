@@ -8,69 +8,202 @@
     
     <style>
         :root {
-            --steel: #1a202c;
-            --accent: #27ae60;
+            --steel: #231b17; /* Deep walnut base */
             --text-dark: #2d3748;
-            --bg-light: #f4f7f6;
+            --bg-dark: #19120f; /* Warm dark-walnut backdrop matching home */
+            --card-bg: #2d231e; /* Warm mid-tone walnut elements */
+            --border-light: rgba(255, 255, 255, 0.08);
+            --form-input-bg: #fafafa;
         }
 
-        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.4; color: var(--text-dark); max-width: 800px; margin: 0 auto; padding: 20px; background-color: var(--bg-light); }
-        .form-container { background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-top: 10px solid var(--steel); box-sizing: border-box; }
-        .header { text-align: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
-        .biz-name { font-size: 28px; font-weight: 800; text-transform: uppercase; margin: 0; color: var(--steel); letter-spacing: -0.5px; }
-        .location { letter-spacing: 4px; color: #95a5a6; font-size: 13px; font-weight: bold; margin-top: 5px; }
-        .id-warning { background: #fff5f5; color: #c53030; border: 1px solid #feb2b2; padding: 12px; border-radius: 5px; text-align: center; font-weight: bold; margin-bottom: 25px; font-size: 13px; }
-        h3 { background: #f8f9fa; color: var(--steel); padding: 8px 12px; text-transform: uppercase; font-size: 12px; margin-top: 25px; border-left: 5px solid var(--accent); font-weight: 800; letter-spacing: 0.5px; }
+        body { 
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif; 
+            line-height: 1.4; 
+            color: var(--text-dark); 
+            max-width: 850px; 
+            margin: 0 auto; 
+            padding: 40px 20px; 
+            background-color: var(--bg-dark); 
+            /* Matches homepage warm vertical wood grain texture */
+            background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+            box-sizing: border-box;
+        }
+
+        .form-container { 
+            background: #ffffff; 
+            padding: 45px 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
+            border-top: 10px solid var(--steel); 
+            box-sizing: border-box; 
+        }
+
+        .header { 
+            text-align: center; 
+            margin-bottom: 25px; 
+            border-bottom: 1px solid #e2e8f0; 
+            padding-bottom: 20px; 
+        }
+
+        .biz-name { 
+            font-size: 28px; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            margin: 0; 
+            color: var(--steel); 
+            letter-spacing: -0.5px; 
+        }
+
+        .location { 
+            letter-spacing: 4px; 
+            color: #718096; 
+            font-size: 12px; 
+            font-weight: 800; 
+            margin-top: 6px; 
+            text-transform: uppercase;
+        }
+
+        .id-warning { 
+            background: #fff5f5; 
+            color: #c53030; 
+            border: 1px solid #feb2b2; 
+            padding: 14px; 
+            border-radius: 6px; 
+            text-align: center; 
+            font-weight: bold; 
+            margin-bottom: 30px; 
+            font-size: 13px; 
+            letter-spacing: 0.3px;
+        }
+
+        /* 4px solid black accent lines instead of green */
+        h3 { 
+            background: #f8f9fa; 
+            color: var(--steel); 
+            padding: 10px 14px; 
+            text-transform: uppercase; 
+            font-size: 12px; 
+            margin-top: 30px; 
+            border-left: 4px solid var(--steel); 
+            font-weight: 900; 
+            letter-spacing: 0.5px; 
+        }
         
-        /* Block rows from being sliced in half */
         .row { display: flex; gap: 15px; margin-bottom: 12px; break-inside: avoid; }
         .field { flex: 1; break-inside: avoid; }
         
-        label { display: block; font-weight: 700; font-size: 11px; margin-bottom: 4px; color: var(--steel); text-transform: uppercase; letter-spacing: 0.3px; }
-        input[type="text"], input[type="email"], input[type="date"], select, textarea { width: 100%; padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 13px; background-color: #fafafa; color: var(--text-dark); }
-        input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus, select:focus, textarea:focus { border-color: var(--accent); outline: none; background-color: #fff; }
+        label { 
+            display: block; 
+            font-weight: 800; 
+            font-size: 11px; 
+            margin-bottom: 5px; 
+            color: var(--steel); 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+        }
+
+        input[type="text"], input[type="email"], input[type="date"], select, textarea { 
+            width: 100%; 
+            padding: 10px 12px; 
+            border: 1px solid #cbd5e1; 
+            border-radius: 5px; 
+            box-sizing: border-box; 
+            font-size: 13px; 
+            background-color: var(--form-input-bg); 
+            color: var(--text-dark); 
+            transition: all 0.15s ease;
+        }
+
+        /* Focus transitions to deep monochrome black border */
+        input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus, select:focus, textarea:focus { 
+            border-color: var(--steel); 
+            outline: none; 
+            background-color: #ffffff; 
+            box-shadow: 0 0 0 1px var(--steel);
+        }
         
         .check-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 8px; break-inside: avoid; }
-        .check-item { font-size: 12px; display: flex; align-items: center; background: #fafafa; padding: 6px 8px; border-radius: 4px; border: 1px solid #e2e8f0; color: var(--text-dark); font-weight: 500; }
-        input[type="checkbox"] { margin-right: 8px; width: 14px; height: 14px; accent-color: var(--accent); flex-shrink: 0; }
+        .check-item { 
+            font-size: 12px; 
+            display: flex; 
+            align-items: center; 
+            background: #fafafa; 
+            padding: 8px 10px; 
+            border-radius: 5px; 
+            border: 1px solid #e2e8f0; 
+            color: var(--text-dark); 
+            font-weight: 500; 
+        }
+
+        input[type="checkbox"] { 
+            margin-right: 10px; 
+            width: 15px; 
+            height: 15px; 
+            accent-color: var(--steel); 
+            flex-shrink: 0; 
+        }
         
         table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12px; break-inside: avoid; }
-        th, td { border: 1px solid #e2e8f0; padding: 8px 10px; text-align: left; }
-        th { background: #f8f9fa; color: #718096; text-transform: uppercase; font-size: 10px; font-weight: 800; }
+        th, td { border: 1px solid #e2e8f0; padding: 10px 12px; text-align: left; }
+        th { background: #f8f9fa; color: #4a5568; text-transform: uppercase; font-size: 10px; font-weight: 800; }
         td { color: var(--text-dark); font-weight: 500; }
         .center { text-align: center; }
-        input[type="radio"] { width: 14px; height: 14px; accent-color: var(--accent); }
+        input[type="radio"] { width: 15px; height: 15px; accent-color: var(--steel); }
         
         .policy-list { list-style: none; padding: 0; font-size: 12px; margin: 0; }
-        .policy-list li { margin-bottom: 8px; display: flex; align-items: flex-start; line-height: 1.4; break-inside: avoid; }
-        .footer { text-align: center; margin-top: 30px; font-size: 10px; color: #a0aec0; border-top: 1px solid #eee; padding-top: 15px; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .sig-row { display: flex; gap: 15px; margin-top: 25px; align-items: flex-end; break-inside: avoid; }
+        .policy-list li { margin-bottom: 10px; display: flex; align-items: flex-start; line-height: 1.5; break-inside: avoid; }
+        .policy-list span { margin-top: -1px; }
+
+        .sig-row { display: flex; gap: 15px; margin-top: 30px; align-items: flex-end; break-inside: avoid; }
         .sig-field { flex: 3; }
         .date-field { flex: 1.5; }
 
+        /* Clean monochrome button matching high-end web design frames */
         .submit-btn { 
-            display: block; width: 100%; padding: 16px; background-color: var(--accent); color: white; 
-            border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 35px;
-            box-shadow: 0 4px 6px rgba(39, 174, 96, 0.2); transition: background 0.2s ease;
+            display: block; 
+            width: 100%; 
+            padding: 18px; 
+            background-color: var(--steel); 
+            color: white; 
+            border: none; 
+            border-radius: 6px; 
+            font-size: 15px; 
+            font-weight: 800; 
+            cursor: pointer; 
+            margin-top: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+            transition: all 0.2s ease;
         }
-        .submit-btn:hover { background-color: #2ecc71; }
+        .submit-btn:hover { background-color: #362a24; transform: translateY(-1px); box-shadow: 0 6px 15px rgba(0,0,0,0.25); }
+
+        .form-footer { 
+            text-align: center; 
+            margin-top: 40px; 
+            font-size: 10px; 
+            color: #718096; 
+            border-top: 1px solid #e2e8f0; 
+            padding-top: 20px; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            line-height: 1.6;
+        }
 
         .no-export { display: none !important; }
-
-        /* Force a clean page break exactly at Section 3 */
         .page-break { page-break-before: always; break-before: page; margin-top: 20px !important; }
 
-        /* Mobile specific view overrides */
-        @media (max-width: 600px) {
+        /* Mobile specific layouts */
+        @media (max-width: 650px) {
+            body { padding: 12px 10px; }
             .row { flex-direction: column; gap: 12px; margin-bottom: 0; }
             .field { margin-bottom: 12px; }
             .check-grid { grid-template-columns: 1fr; gap: 6px; }
             .sig-row { flex-direction: column; align-items: stretch; gap: 12px; }
-            .form-container { padding: 20px; }
+            .form-container { padding: 25px 20px; }
         }
 
-        /* HARD VIEWPORT FOR PDF GENERATION */
+        /* STRIP WEB STYLES DURING PDF DOWNLOAD */
         .pdf-render-mode {
             width: 750px !important;
             padding: 30px !important;
@@ -127,7 +260,6 @@
     </div>
     <div class="field" style="margin-top:12px;"><label>Current Injuries, Medical History, or Medications</label><textarea rows="2"></textarea></div>
 
-    <!-- CLEAN PAGE BREAK MOVED HERE TO PREVENT CLIPPING -->
     <h3 class="page-break">3. Massage & Lifestyle Preferences</h3>
     <div class="row">
         <div class="field">
@@ -190,7 +322,7 @@
 
     <button class="submit-btn" id="dl-button" onclick="generatePDF()">SUBMIT & DOWNLOAD PDF</button>
 
-    <div class="footer">
+    <div class="form-footer">
         Thomas Ahrensfeld, LMT | License: MA 99692 | Knead Clay LLC
     </div>
 </div>
