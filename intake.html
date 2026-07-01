@@ -39,10 +39,10 @@
         input[type="radio"] { width: 14px; height: 14px; accent-color: var(--accent); }
         
         .policy-list { list-style: none; padding: 0; font-size: 12px; margin: 0; }
-        .policy-list li { margin-bottom: 8px; display: flex; align-items: flex-start; line-height: 1.4; }
+        .policy-list li { margin-bottom: 8px; display: flex; align-items: flex-start; line-height: 1.4; break-inside: avoid; }
         .footer { text-align: center; margin-top: 30px; font-size: 10px; color: #a0aec0; border-top: 1px solid #eee; padding-top: 15px; text-transform: uppercase; letter-spacing: 1px; }
         
-        .sig-row { display: flex; gap: 15px; margin-top: 25px; align-items: flex-end; }
+        .sig-row { display: flex; gap: 15px; margin-top: 25px; align-items: flex-end; break-inside: avoid; }
         .sig-field { flex: 3; }
         .date-field { flex: 1.5; }
 
@@ -56,7 +56,7 @@
         .no-export { display: none !important; }
 
         /* Force Section 4 to consistently start clean on Page 2 */
-        .page-break { page-break-before: always; break-before: page; margin-top: 30px; }
+        .page-break { page-break-before: always; break-before: page; margin-top: 15px !important; }
 
         /* Mobile specific view overrides */
         @media (max-width: 600px) {
@@ -67,17 +67,23 @@
             .form-container { padding: 20px; }
         }
 
-        /* HARD WIRED DESKTOP SIMULATION CSS CLASS FOR HTML2PDF */
+        /* ULTRA TIGHT PDF EXPORT MODE */
         .pdf-render-mode {
             width: 750px !important;
-            padding: 30px !important;
+            padding: 25px 35px !important;
             box-shadow: none !important;
             border: none !important;
         }
-        .pdf-render-mode .row { flex-direction: row !important; gap: 15px !important; margin-bottom: 12px !important; }
+        .pdf-render-mode .row { flex-direction: row !important; gap: 15px !important; margin-bottom: 8px !important; }
         .pdf-render-mode .field { margin-bottom: 0 !important; }
-        .pdf-render-mode .check-grid { grid-template-columns: 1fr 1fr 1fr !important; gap: 8px !important; }
-        .pdf-render-mode .sig-row { flex-direction: row !important; align-items: flex-end !important; gap: 15px !important; }
+        .pdf-render-mode h3 { margin-top: 14px !important; padding: 6px 10px !important; }
+        .pdf-render-mode .check-grid { grid-template-columns: 1fr 1fr 1fr !important; gap: 6px !important; margin-top: 4px !important; }
+        .pdf-render-mode .check-item { padding: 4px 6px !important; }
+        .pdf-render-mode table { margin-top: 8px !important; }
+        .pdf-render-mode th, .pdf-render-mode td { padding: 5px 8px !important; }
+        .pdf-render-mode .policy-list li { margin-bottom: 5px !important; }
+        .pdf-render-mode .sig-row { flex-direction: row !important; align-items: flex-end !important; gap: 15px !important; margin-top: 15px !important; }
+        .pdf-render-mode .footer { margin-top: 20px !important; padding-top: 10px !important; }
     </style>
 </head>
 <body>
@@ -205,7 +211,7 @@
         element.classList.add('pdf-render-mode');
 
         const opt = {
-            margin:       [0.3, 0.4, 0.4, 0.4],
+            margin:       [0.3, 0.3, 0.3, 0.3], // Slightly tighter margins to maximize printable canvas
             filename:     'Barclay_Intake_' + clientName.replace(/\s+/g, '_') + '.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { 
