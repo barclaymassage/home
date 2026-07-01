@@ -40,9 +40,16 @@
       margin: 0 auto;
     }
 
+    /* Structured reading panel for the main header text */
     .pricing-header {
       text-align: center;
       margin-bottom: 40px;
+      background: rgba(35, 27, 23, 0.7); /* Isolate header text from texture */
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-light);
+      padding: 35px 25px;
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
     }
 
     .pricing-header h1 {
@@ -50,7 +57,7 @@
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -0.5px;
-      margin-bottom: 15px;
+      margin: 0 0 15px 0;
       color: #ffffff;
     }
 
@@ -62,19 +69,20 @@
       line-height: 1.6;
     }
 
-    /* Intro Offer Banner Styling - Matches home's promo badge look */
+    /* Solid dark backing panel with distinct borders for the promo text */
     .intro-banner {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px dashed rgba(255, 255, 255, 0.2);
-      padding: 22px;
+      background: rgba(35, 27, 23, 0.9); /* Solid dark contrast box */
+      background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
+      border: 1px dashed rgba(255, 255, 255, 0.25);
+      padding: 25px;
       border-radius: 10px;
       margin-bottom: 40px;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     }
 
     .intro-banner h3 {
-      margin: 0 0 8px 0;
+      margin: 0 0 10px 0;
       font-size: 1.2rem;
       color: #ffffff;
       font-weight: 800;
@@ -84,8 +92,8 @@
 
     .intro-banner p {
       margin: 0;
-      font-size: 1rem;
-      color: #cbd5e1;
+      font-size: 1.05rem;
+      color: #e2e8f0;
       line-height: 1.5;
     }
 
@@ -246,12 +254,13 @@
   <section class="pricing-section">
     <div class="pricing-container">
        
+      <!-- Structured Header Box -->
       <div class="pricing-header">
         <h1>Investment in Your Recovery</h1>
         <p>Direct, transparent pricing for clinical massage therapy and performance recovery. No hidden fees, no high-pressure contracts.</p>
       </div>
 
-      <!-- First-Time Client Special Banner -->
+      <!-- High-Contrast Special Banner Box -->
       <div class="intro-banner">
         <h3>First-Time Client Special</h3>
         <p>Receive <strong>$20 off</strong> your initial 60 or 90-minute session. Discount applied automatically at checkout.</p>
