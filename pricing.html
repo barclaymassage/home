@@ -129,7 +129,9 @@
     /* High-Priority / Highlighted Card Style - Sleek White Border Framed Accent */
     .price-card.popular {
       border: 1px solid rgba(255, 255, 255, 0.25);
-      background: rgba(45, 35, 30, 0.4);
+      /* Changed to a solid box backing to lock text readability over wood grain */
+      background: var(--steel);
+      background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
     }
 
     .price-card.popular:hover {
