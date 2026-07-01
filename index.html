@@ -6,18 +6,19 @@
     <title>Barclay Massage & Wellness | Port Orange Recovery</title>
     <style>
         :root {
-            --steel: #1a202c;
-            --accent: #27ae60;
+            --steel: #231b17; /* Deep, premium walnut trunk base */
             --text-dark: #2d3748;
-            --bg-dark: #11141a;
-            --card-bg: #1e242f;
+            --bg-dark: #19120f; /* Rich, warm dark-walnut backdrop */
+            --card-bg: #2d231e; /* Warm mid-tone walnut for buttons */
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.3);
         }
 
         body { 
             font-family: 'Inter', -apple-system, sans-serif;
             margin: 0; 
             background-color: var(--bg-dark);
-            background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+            background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
             color: #ffffff;
             min-height: 100vh; 
             display: flex;
@@ -32,22 +33,23 @@
 
         /* 1. HEADER STRIP */
         header {
-            background: rgba(26, 32, 44, 0.95);
-            border-bottom: 3px solid var(--accent);
-            padding: 20px;
+            background: rgba(35, 27, 23, 0.96);
+            border-bottom: 1px solid var(--border-light);
+            padding: 25px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
         .biz-logo { 
             width: 100%;
             max-width: 320px; 
             height: auto;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
         }
 
         /* MAIN CONTAINER FOR STRIPS */
@@ -67,11 +69,12 @@
         .bio-strip {
             display: flex;
             background: var(--steel);
-            background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+            background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             align-items: center;
+            border: 1px solid var(--border-light);
         }
 
         .photo-column {
@@ -81,7 +84,7 @@
             justify-content: center;
             align-items: center;
             padding: 40px;
-            background: rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.25);
         }
 
         .lmt-photo { 
@@ -90,9 +93,9 @@
             height: auto; 
             border-radius: 8px;
             object-fit: cover; 
-            border: 3px solid var(--accent);
-            padding: 4px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
         }
 
         .text-column {
@@ -107,18 +110,18 @@
             text-transform: uppercase;
             letter-spacing: -0.5px;
             margin-bottom: 15px;
-            border-left: 6px solid var(--accent);
+            border-left: 4px solid #ffffff;
             padding-left: 18px;
         }
 
         .promo-badge {
-            background: rgba(39, 174, 96, 0.15);
-            border: 1px dashed var(--accent);
-            color: #4ade80;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            color: #f1f5f9;
             padding: 10px 14px;
             border-radius: 8px;
             font-size: 13px;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 25px;
             display: inline-flex;
             align-items: center;
@@ -141,7 +144,7 @@
 
         .contact-card {
             background: var(--card-bg);
-            border: 2px solid #2d3748;
+            border: 1px solid var(--border-light);
             padding: 25px 20px;
             border-radius: 10px;
             text-decoration: none;
@@ -149,25 +152,32 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            transition: all 0.25s ease-in-out;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         .contact-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            background: #232a37;
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            background: #362a24; /* Elegant subtle lift to a slightly warmer walnut */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
         }
 
+        /* Distinct white subtle outline specifically for the high-priority booking action */
         .booking-live {
-            background: rgba(39, 174, 96, 0.08);
-            border-color: var(--accent);
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.01);
+        }
+        
+        .booking-live:hover {
+            border-color: #ffffff;
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .icon { 
-            font-size: 26px; 
+            font-size: 24px; 
             margin-bottom: 15px; 
-            background: rgba(255, 255, 255, 0.05); 
+            background: rgba(255, 255, 255, 0.03); 
             padding: 12px; 
             border-radius: 50%;
             width: 30px;
@@ -201,26 +211,26 @@
         }
 
         .booking-live .contact-subtext { 
-            color: var(--accent); 
-            font-weight: 800; 
+            color: #ffffff; 
+            font-weight: 700; 
         }
 
         /* 4. FOOTER STRIP */
         footer {
             margin-top: auto;
-            background: #0b0d13;
+            background: #120c0a;
             padding: 30px 20px;
             text-align: center;
             font-size: 11px; 
-            color: #64748b; 
+            color: #718096; 
             text-transform: uppercase; 
             letter-spacing: 1.5px;
             line-height: 1.8;
-            border-top: 1px solid #1e242f;
+            border-top: 1px solid var(--border-light);
         }
 
-        .address-link { color: var(--accent); text-decoration: none; font-weight: 700; }
-        .address-link:hover { text-decoration: underline; }
+        .address-link { color: #cbd5e1; text-decoration: none; font-weight: 700; }
+        .address-link:hover { text-decoration: underline; color: #ffffff; }
 
         /* Responsive Optimization */
         @media (max-width: 950px) {
@@ -231,7 +241,6 @@
             .bio-header { border-left: none; padding-left: 0; }
             .promo-badge { justify-content: center; }
             
-            /* Stacking fix for phone layouts seen in 1000014746.jpg */
             .action-strip { grid-template-columns: 1fr; gap: 12px; }
             .contact-card { 
                 flex-direction: row; 
@@ -319,7 +328,7 @@
 
 <footer>
     <strong>THOMAS "CLAY" AHRENSFELD, LMT | MA 99692 | KNEAD CLAY LLC</strong><br>
-    <span style="font-size: 10px; color: #4b5563; display: block; margin-bottom: 4px;">Serving Port Orange, Daytona Beach, and New Smyrna Beach</span>
+    <span style="font-size: 10px; color: #4a5568; display: block; margin-bottom: 4px;">Serving Port Orange, Daytona Beach, and New Smyrna Beach</span>
     <a href="https://maps.google.com/?q=5889+S+Williamson+Blvd+Suite+1416+Port+Orange+FL+32128" 
        target="_blank" class="address-link">
          5889 S Williamson Blvd, Suite 1416 &bull; Port Orange, FL 32128
