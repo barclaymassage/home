@@ -36,7 +36,7 @@
     }
 
     .pricing-container {
-      max-width: 950px; /* Enhanced slightly to anchor the 2-card system comfortably */
+      max-width: 950px;
       margin: 0 auto;
     }
 
@@ -44,7 +44,8 @@
     .pricing-header {
       text-align: center;
       margin-bottom: 40px;
-      background: rgba(35, 27, 23, 0.7); /* Isolate header text from texture */
+      background: rgba(35, 27, 23, 0.85); /* Dark walnut backing with blur */
+      background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
       backdrop-filter: blur(4px);
       border: 1px solid var(--border-light);
       padding: 35px 25px;
@@ -71,7 +72,7 @@
 
     /* Solid dark backing panel with distinct borders for the promo text */
     .intro-banner {
-      background: rgba(35, 27, 23, 0.9); /* Solid dark contrast box */
+      background: rgba(35, 27, 23, 0.95);
       background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
       border: 1px dashed rgba(255, 255, 255, 0.25);
       padding: 25px;
@@ -128,8 +129,7 @@
 
     /* High-Priority / Highlighted Card Style - Sleek White Border Framed Accent */
     .price-card.popular {
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      /* Changed to a solid box backing to lock text readability over wood grain */
+      border: 1px solid rgba(255, 255, 255, 0.3);
       background: var(--steel);
       background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
     }
@@ -178,7 +178,7 @@
       padding: 22px 0;
       margin-bottom: 25px;
       text-align: center;
-      background: rgba(0,0,0,0.15);
+      background: rgba(0,0,0,0.2);
       border-radius: 6px;
     }
 
@@ -227,17 +227,21 @@
 
     /* Policy Section Styling */
     .pricing-policies {
-      border-top: 1px solid var(--border-light);
-      padding-top: 40px;
+      background: rgba(35, 27, 23, 0.7);
+      background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 30px 25px;
       max-width: 750px;
       margin: 0 auto;
       text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
 
     .pricing-policies h2 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 900;
-      margin-bottom: 15px;
+      margin: 0 0 10px 0;
       color: #ffffff;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -255,7 +259,7 @@
 
   <section class="pricing-section">
     <div class="pricing-container">
-       
+        
       <!-- Structured Header Box -->
       <div class="pricing-header">
         <h1>Investment in Your Recovery</h1>
