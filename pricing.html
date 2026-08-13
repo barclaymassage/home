@@ -6,11 +6,10 @@
   <title>Pricing & Packages | Barclay Massage & Wellness</title>
   <style>
     :root {
-      --steel: #111111; /* Deep matte black matching card emblem */
+      --steel: #111111; /* Matte black card/container background */
       --text-dark: #2d3748;
-      --bg-dark: #19120f; /* Rich dark-walnut wood backdrop */
-      --card-bg: #161616; /* Solid matte black for inner card elements */
-      --border-light: rgba(255, 255, 255, 0.15); /* High contrast white border accent */
+      --bg-dark: #19120f; /* Warm dark-walnut outer backdrop */
+      --border-light: rgba(255, 255, 255, 0.15); /* Distinct white line accents */
       --border-hover: rgba(255, 255, 255, 0.4);
     }
 
@@ -29,61 +28,64 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Pricing Section Base */
     .pricing-section {
       padding: 60px 20px;
       animation: fadeIn 0.8s ease-out;
     }
 
+    /* MAIN WRAPPER CONTAINER - MATCHES HOMEPAGE PANEL */
     .pricing-container {
       max-width: 950px;
       margin: 0 auto;
+      background: var(--steel);
+      background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
+      border: 2px solid var(--border-light);
+      border-radius: 12px;
+      padding: 45px 35px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
     }
 
-    /* Structured Header Box - Solid Matte Black Panel */
+    /* Header Box Inside Main Panel */
     .pricing-header {
       text-align: center;
       margin-bottom: 30px;
       background: #080808;
-      background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
       border: 1px solid var(--border-light);
-      padding: 35px 25px;
-      border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+      padding: 30px 20px;
+      border-radius: 10px;
     }
 
     .pricing-header h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -0.5px;
-      margin: 0 0 15px 0;
+      margin: 0 0 12px 0;
       color: #ffffff;
     }
 
     .pricing-header p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #cbd5e1;
       max-width: 650px;
       margin: 0 auto;
       line-height: 1.6;
     }
 
-    /* High-Contrast Special Banner Box - Matte Black */
+    /* First-Time Promo Banner */
     .intro-banner {
       background: #080808;
-      background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
       border: 1px dashed rgba(255, 255, 255, 0.3);
-      padding: 25px;
+      padding: 22px;
       border-radius: 10px;
-      margin-bottom: 40px;
+      margin-bottom: 35px;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     }
 
     .intro-banner h3 {
-      margin: 0 0 10px 0;
-      font-size: 1.2rem;
+      margin: 0 0 8px 0;
+      font-size: 1.15rem;
       color: #ffffff;
       font-weight: 800;
       text-transform: uppercase;
@@ -92,7 +94,7 @@
 
     .intro-banner p {
       margin: 0;
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: #e2e8f0;
       line-height: 1.5;
     }
@@ -101,35 +103,32 @@
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-bottom: 40px;
+      gap: 25px;
+      margin-bottom: 35px;
       align-items: start;
     }
 
-    /* Individual Card Styling - Deep Obsidian / Black */
+    /* Card Styling */
     .price-card {
       background: #080808;
-      background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
       border: 1px solid var(--border-light);
-      border-radius: 12px;
-      padding: 35px 30px;
+      border-radius: 10px;
+      padding: 30px 25px;
       display: flex;
       flex-direction: column;
       position: relative;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
       transition: all 0.2s ease-in-out;
     }
 
     .price-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-3px);
       border-color: var(--border-hover);
-      box-shadow: 0 25px 45px rgba(0,0,0,0.8);
     }
 
-    /* High-Priority / Highlighted Card Style - Framed Bright Accent Border */
+    /* Popular / Highlighted Card */
     .price-card.popular {
       background: #0d0d0d;
-      background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
       border: 2px solid rgba(255, 255, 255, 0.4);
     }
 
@@ -144,8 +143,8 @@
       transform: translateX(-50%);
       background-color: #ffffff;
       color: #000000;
-      padding: 5px 14px;
-      font-size: 0.75rem;
+      padding: 4px 12px;
+      font-size: 0.7rem;
       font-weight: 900;
       border-radius: 20px;
       text-transform: uppercase;
@@ -153,9 +152,8 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
 
-    /* Card Typography & Content */
     .card-header h2 {
-      font-size: 1.9rem;
+      font-size: 1.8rem;
       font-weight: 900;
       margin: 10px 0;
       color: #ffffff;
@@ -164,43 +162,42 @@
     }
 
     .focus-text {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: #cbd5e1;
       line-height: 1.6;
-      min-height: 70px;
+      min-height: 65px;
       margin-bottom: 20px;
     }
 
     .price-block {
       border-top: 1px solid var(--border-light);
       border-bottom: 1px solid var(--border-light);
-      padding: 22px 0;
-      margin-bottom: 25px;
+      padding: 20px 0;
+      margin-bottom: 20px;
       text-align: center;
       background: #141414;
       border-radius: 6px;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .price {
-      font-size: 3.2rem;
+      font-size: 3rem;
       font-weight: 900;
       color: #ffffff;
     }
 
     .per-session {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       color: #94a3b8;
       display: block;
-      margin-top: 5px;
+      margin-top: 4px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
     .package-block h3 {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       font-weight: 800;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       color: #ffffff;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -213,8 +210,8 @@
     }
 
     .package-block li {
-      font-size: 1rem;
-      padding: 10px 0;
+      font-size: 0.95rem;
+      padding: 8px 0;
       color: #cbd5e1;
       border-bottom: 1px dashed var(--border-light);
       display: flex;
@@ -225,53 +222,56 @@
       border-bottom: none;
     }
 
-    /* Policy Section Styling - Matte Black Box */
+    /* Cancellation Policy Box */
     .pricing-policies {
       background: #080808;
-      background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
       border: 1px solid var(--border-light);
       border-radius: 10px;
-      padding: 30px 25px;
-      max-width: 750px;
-      margin: 0 auto;
+      padding: 25px;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
     }
 
     .pricing-policies h2 {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       font-weight: 900;
-      margin: 0 0 10px 0;
+      margin: 0 0 8px 0;
       color: #ffffff;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
     .pricing-policies p {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: #94a3b8;
-      line-height: 1.7;
+      line-height: 1.6;
       margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      .pricing-container { padding: 25px 15px; }
+      .pricing-header h1 { font-size: 1.75rem; }
     }
   </style>
 </head>
 <body>
 
   <section class="pricing-section">
+    <!-- HOMEPAGE MATTE BLACK FRAME -->
     <div class="pricing-container">
         
-      <!-- Structured Header Box -->
+      <!-- Header Box -->
       <div class="pricing-header">
         <h1>Investment in Your Recovery</h1>
         <p>Direct, transparent pricing for clinical massage therapy and performance recovery. No hidden fees, no high-pressure contracts.</p>
       </div>
 
-      <!-- High-Contrast Special Banner Box -->
+      <!-- First-Time Promo Banner -->
       <div class="intro-banner">
         <h3>First-Time Client Special</h3>
         <p>Receive <strong>$20 off</strong> your initial 60 or 90-minute session. Discount applied automatically at checkout.</p>
       </div>
 
+      <!-- Grid -->
       <div class="pricing-grid">
         
         <!-- 60 Minutes Card -->
@@ -319,7 +319,7 @@
 
       </div>
 
-      <!-- Cancellation Policy Section -->
+      <!-- Cancellation Policy -->
       <div class="pricing-policies">
         <h2>Cancellation Policy</h2>
         <p>Your appointment time is reserved exclusively for you. Cancellations or modifications made with less than 24 hours' notice are subject to a fee up to the full value of the scheduled service.</p>
