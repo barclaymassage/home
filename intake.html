@@ -11,10 +11,11 @@
             --steel: #231b17; /* Deep walnut base */
             --text-dark: #2d3748;
             --bg-dark: #19120f; /* Warm dark-walnut backdrop matching home */
-            --card-bg: #2d231e; /* Warm mid-tone walnut elements */
             --border-light: rgba(255, 255, 255, 0.08);
             --form-input-bg: #fafafa;
         }
+
+        * { box-sizing: border-box; }
 
         body { 
             font-family: 'Inter', 'Segoe UI', Arial, sans-serif; 
@@ -24,9 +25,7 @@
             margin: 0 auto; 
             padding: 40px 20px; 
             background-color: var(--bg-dark); 
-            /* Matches homepage warm vertical wood grain texture */
             background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
-            box-sizing: border-box;
         }
 
         .form-container { 
@@ -35,7 +34,6 @@
             border-radius: 12px; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
             border-top: 10px solid var(--steel); 
-            box-sizing: border-box; 
         }
 
         .header { 
@@ -76,7 +74,6 @@
             letter-spacing: 0.3px;
         }
 
-        /* 4px solid black accent lines instead of green */
         h3 { 
             background: #f8f9fa; 
             color: var(--steel); 
@@ -87,6 +84,7 @@
             border-left: 4px solid var(--steel); 
             font-weight: 900; 
             letter-spacing: 0.5px; 
+            break-after: avoid;
         }
         
         .row { display: flex; gap: 15px; margin-bottom: 12px; break-inside: avoid; }
@@ -107,14 +105,15 @@
             padding: 10px 12px; 
             border: 1px solid #cbd5e1; 
             border-radius: 5px; 
-            box-sizing: border-box; 
             font-size: 13px; 
             background-color: var(--form-input-bg); 
             color: var(--text-dark); 
             transition: all 0.15s ease;
+            font-family: inherit;
         }
 
-        /* Focus transitions to deep monochrome black border */
+        textarea { resize: vertical; min-height: 70px; }
+
         input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus, select:focus, textarea:focus { 
             border-color: var(--steel); 
             outline: none; 
@@ -158,7 +157,6 @@
         .sig-field { flex: 3; }
         .date-field { flex: 1.5; }
 
-        /* Clean monochrome button matching high-end web design frames */
         .submit-btn { 
             display: block; 
             width: 100%; 
@@ -203,17 +201,33 @@
             .form-container { padding: 25px 20px; }
         }
 
-        /* STRIP WEB STYLES DURING PDF DOWNLOAD */
-        .pdf-render-mode {
+        /* Printable PDF formatting overrides */
+        .pdf-export-temp {
+            background: #ffffff !important;
+            color: #2d3748 !important;
+            padding: 20px !important;
             width: 750px !important;
-            padding: 30px !important;
-            box-shadow: none !important;
-            border: none !important;
         }
-        .pdf-render-mode .row { flex-direction: row !important; gap: 15px !important; margin-bottom: 12px !important; }
-        .pdf-render-mode .field { margin-bottom: 0 !important; }
-        .pdf-render-mode .check-grid { grid-template-columns: 1fr 1fr 1fr !important; gap: 8px !important; }
-        .pdf-render-mode .sig-row { flex-direction: row !important; align-items: flex-end !important; gap: 15px !important; }
+        .pdf-export-temp .print-val {
+            display: block;
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            background: #fafafa;
+            font-size: 13px;
+            min-height: 35px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            color: #111111;
+            font-weight: 600;
+        }
+        .pdf-export-temp .check-symbol {
+            display: inline-block;
+            width: 16px;
+            font-weight: bold;
+            color: var(--steel);
+        }
     </style>
 </head>
 <body>
@@ -230,17 +244,17 @@
 
     <h3>1. Client Information</h3>
     <div class="field" style="margin-bottom:12px;"><label>Full Name</label><input type="text" id="clientName" placeholder="First Last"></div>
-    <div class="field" style="margin-bottom:12px;"><label>Street Address</label><input type="text"></div>
+    <div class="field" style="margin-bottom:12px;"><label>Street Address</label><input type="text" id="streetAddress"></div>
     <div class="row">
-        <div class="field"><label>Phone Number</label><input type="text"></div>
-        <div class="field"><label>Date of Birth</label><input type="date"></div>
+        <div class="field"><label>Phone Number</label><input type="text" id="phone"></div>
+        <div class="field"><label>Date of Birth</label><input type="date" id="dob"></div>
     </div>
     <div class="row">
-        <div class="field"><label>Email Address</label><input type="email"></div>
+        <div class="field"><label>Email Address</label><input type="email" id="email"></div>
     </div>
     <div class="row">
-        <div class="field"><label>Emergency Contact Name</label><input type="text"></div>
-        <div class="field"><label>Emergency Contact Phone</label><input type="text"></div>
+        <div class="field"><label>Emergency Contact Name</label><input type="text" id="emergencyName"></div>
+        <div class="field"><label>Emergency Contact Phone</label><input type="text" id="emergencyPhone"></div>
     </div>
 
     <h3>2. Health & Structural Conditions</h3>
@@ -258,52 +272,60 @@
         <div class="check-item"><input type="checkbox"> Sciatica / Lower Back Stiffness</div>
         <div class="check-item"><input type="checkbox"> Shoulder / Mobility Restriction</div>
     </div>
-    <div class="field" style="margin-top:12px;"><label>Current Injuries, Medical History, or Medications</label><textarea rows="2"></textarea></div>
+    <div class="field" style="margin-top:12px;">
+        <label>Current Injuries, Medical History, or Medications</label>
+        <textarea rows="3" id="medicalHistory" placeholder="List any relevant injuries, past surgeries, or current medications..."></textarea>
+    </div>
 
     <h3 class="page-break">3. Massage & Lifestyle Preferences</h3>
     <div class="row">
         <div class="field">
             <label>Primary Goal</label>
-            <select>
+            <select id="primaryGoal">
                 <option value="">-- Select Goal --</option>
-                <option value="sports">Athletic Performance & Training Recovery</option>
-                <option value="pain">Pain Relief & Chronic Tension Management</option>
-                <option value="recovery">Injury Rehabilitation & Mobility</option>
-                <option value="relaxation">Stress Relief & General Relaxation</option>
+                <option value="Athletic Performance & Training Recovery">Athletic Performance & Training Recovery</option>
+                <option value="Pain Relief & Chronic Tension Management">Pain Relief & Chronic Tension Management</option>
+                <option value="Injury Rehabilitation & Mobility">Injury Rehabilitation & Mobility</option>
+                <option value="Stress Relief & General Relaxation">Stress Relief & General Relaxation</option>
             </select>
         </div>
         <div class="field">
             <label>Preferred Pressure Level</label>
-            <select>
-                <option value="deep">Deep Tissue</option>
-                <option value="firm">Firm</option>
-                <option value="medium">Medium</option>
-                <option value="light">Light</option>
+            <select id="preferredPressure">
+                <option value="">-- Select Pressure --</option>
+                <option value="Deep Tissue">Deep Tissue</option>
+                <option value="Firm">Firm</option>
+                <option value="Medium">Medium</option>
+                <option value="Light">Light</option>
             </select>
         </div>
     </div>
     <div class="row">
         <div class="field">
-            <label>Daily Activity & Lifestyle (e.g., Desk Job, Weightlifting, Manual Labor, Running)</label>
-            <input type="text" placeholder="e.g., Desk work 40 hrs/wk, fitness training 3x/wk, etc.">
+            <label>Daily Activity & Lifestyle</label>
+            <input type="text" id="lifestyle" placeholder="e.g., Desk work 40 hrs/wk, fitness training 3x/wk, etc.">
         </div>
     </div>
     <div class="row">
-        <div class="field"><label>Specific Areas of Focus / Chronic Tension</label><input type="text"></div>
-        <div class="field"><label>Areas to Strictly Avoid</label><input type="text"></div>
+        <div class="field"><label>Specific Areas of Focus / Chronic Tension</label><input type="text" id="focusAreas"></div>
+        <div class="field"><label>Areas to Strictly Avoid</label><input type="text" id="avoidAreas"></div>
     </div>
 
     <h3>4. Area Consent</h3>
     <table>
-        <tr><th>Body Area</th><th class="center" style="width: 70px;">Yes</th><th class="center" style="width: 70px;">No</th></tr>
-        <tr><td>Head & Face</td><td class="center"><input type="radio" name="r1"></td><td class="center"><input type="radio" name="r1"></td></tr>
-        <tr><td>Neck & Shoulders</td><td class="center"><input type="radio" name="r2"></td><td class="center"><input type="radio" name="r2"></td></tr>
-        <tr><td>Back</td><td class="center"><input type="radio" name="r3"></td><td class="center"><input type="radio" name="r3"></td></tr>
-        <tr><td>Chest (Draped)</td><td class="center"><input type="radio" name="r4"></td><td class="center"><input type="radio" name="r4"></td></tr>
-        <tr><td>Arms & Hands</td><td class="center"><input type="radio" name="r5"></td><td class="center"><input type="radio" name="r5"></td></tr>
-        <tr><td>Glutes (Draped)</td><td class="center"><input type="radio" name="r6"></td><td class="center"><input type="radio" name="r6"></td></tr>
-        <tr><td>Legs</td><td class="center"><input type="radio" name="r7"></td><td class="center"><input type="radio" name="r7"></td></tr>
-        <tr><td>Feet</td><td class="center"><input type="radio" name="r8"></td><td class="center"><input type="radio" name="r8"></td></tr>
+        <thead>
+            <tr><th>Body Area</th><th class="center" style="width: 70px;">Yes</th><th class="center" style="width: 70px;">No</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Head & Face</td><td class="center"><input type="radio" name="r1" value="Yes"></td><td class="center"><input type="radio" name="r1" value="No"></td></tr>
+            <tr><td>Neck & Shoulders</td><td class="center"><input type="radio" name="r2" value="Yes"></td><td class="center"><input type="radio" name="r2" value="No"></td></tr>
+            <tr><td>Back</td><td class="center"><input type="radio" name="r3" value="Yes"></td><td class="center"><input type="radio" name="r3" value="No"></td></tr>
+            <tr><td>Chest (Draped)</td><td class="center"><input type="radio" name="r4" value="Yes"></td><td class="center"><input type="radio" name="r4" value="No"></td></tr>
+            <tr><td>Arms & Hands</td><td class="center"><input type="radio" name="r5" value="Yes"></td><td class="center"><input type="radio" name="r5" value="No"></td></tr>
+            <tr><td>Glutes (Draped)</td><td class="center"><input type="radio" name="r6" value="Yes"></td><td class="center"><input type="radio" name="r6" value="No"></td></tr>
+            <tr><td>Legs</td><td class="center"><input type="radio" name="r7" value="Yes"></td><td class="center"><input type="radio" name="r7" value="No"></td></tr>
+            <tr><td>Feet</td><td class="center"><input type="radio" name="r8" value="Yes"></td><td class="center"><input type="radio" name="r8" value="No"></td></tr>
+        </tbody>
     </table>
 
     <h3>5. Policies & Informed Consent</h3>
@@ -316,7 +338,7 @@
     </ul>
 
     <div class="sig-row">
-        <div class="sig-field"><label>Digital Signature (Type Full Name)</label><input type="text" placeholder="Full Name"></div>
+        <div class="sig-field"><label>Digital Signature (Type Full Name)</label><input type="text" id="signature" placeholder="Full Name"></div>
         <div class="date-field"><label>Date Signed</label><input type="date" id="currentDate"></div>
     </div>
 
@@ -328,34 +350,104 @@
 </div>
 
 <script>
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('currentDate').value = today;
+    document.getElementById('currentDate').value = new Date().toISOString().split('T')[0];
 
     function generatePDF() {
-        const element = document.getElementById('form-content');
-        const clientName = document.getElementById('clientName').value || 'Client';
-        const button = document.getElementById('dl-button');
-        
-        button.classList.add('no-export');
-        element.classList.add('pdf-render-mode');
+        const originalElement = document.getElementById('form-content');
+        const clientNameInput = document.getElementById('clientName').value.trim();
+        const clientName = clientNameInput || 'Client';
 
+        // 1. Create a deep clone to preserve interactive UI for user
+        const clone = originalElement.cloneNode(true);
+        clone.classList.add('pdf-export-temp');
+
+        // Hide submit button in clone
+        const cloneBtn = clone.querySelector('#dl-button');
+        if (cloneBtn) cloneBtn.remove();
+
+        // 2. Replace text inputs and textareas with formatted text boxes
+        const originalInputs = originalElement.querySelectorAll('input[type="text"], input[type="email"], input[type="date"], textarea');
+        const cloneInputs = clone.querySelectorAll('input[type="text"], input[type="email"], input[type="date"], textarea');
+
+        originalInputs.forEach((orig, idx) => {
+            const val = orig.value || ' ';
+            const printDiv = document.createElement('div');
+            printDiv.className = 'print-val';
+            printDiv.textContent = val;
+            if (cloneInputs[idx] && cloneInputs[idx].parentNode) {
+                cloneInputs[idx].parentNode.replaceChild(printDiv, cloneInputs[idx]);
+            }
+        });
+
+        // 3. Replace select dropdowns with selected text
+        const originalSelects = originalElement.querySelectorAll('select');
+        const cloneSelects = clone.querySelectorAll('select');
+
+        originalSelects.forEach((orig, idx) => {
+            const val = orig.options[orig.selectedIndex]?.text || '';
+            const printDiv = document.createElement('div');
+            printDiv.className = 'print-val';
+            printDiv.textContent = (val.includes('-- Select')) ? '' : val;
+            if (cloneSelects[idx] && cloneSelects[idx].parentNode) {
+                cloneSelects[idx].parentNode.replaceChild(printDiv, cloneSelects[idx]);
+            }
+        });
+
+        // 4. Render Checkboxes clearly
+        const originalChecks = originalElement.querySelectorAll('input[type="checkbox"]');
+        const cloneChecks = clone.querySelectorAll('input[type="checkbox"]');
+
+        originalChecks.forEach((orig, idx) => {
+            const span = document.createElement('span');
+            span.className = 'check-symbol';
+            span.textContent = orig.checked ? '[X] ' : '[  ] ';
+            if (cloneChecks[idx] && cloneChecks[idx].parentNode) {
+                cloneChecks[idx].parentNode.replaceChild(span, cloneChecks[idx]);
+            }
+        });
+
+        // 5. Render Radio buttons cleanly
+        const originalRadios = originalElement.querySelectorAll('input[type="radio"]');
+        const cloneRadios = clone.querySelectorAll('input[type="radio"]');
+
+        originalRadios.forEach((orig, idx) => {
+            const span = document.createElement('span');
+            span.className = 'check-symbol';
+            span.textContent = orig.checked ? '(X)' : '(  )';
+            if (cloneRadios[idx] && cloneRadios[idx].parentNode) {
+                cloneRadios[idx].parentNode.replaceChild(span, cloneRadios[idx]);
+            }
+        });
+
+        // 6. Mount off-screen clone for capturing
+        const container = document.createElement('div');
+        container.style.position = 'absolute';
+        container.style.left = '-9999px';
+        container.style.top = '0';
+        container.appendChild(clone);
+        document.body.appendChild(container);
+
+        // 7. Configure html2pdf settings
         const opt = {
-            margin:       [0.4, 0.4, 0.4, 0.4],
+            margin:       [0.3, 0.3, 0.4, 0.3],
             filename:     'Barclay_Intake_' + clientName.replace(/\s+/g, '_') + '.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { 
                 scale: 2, 
                 useCORS: true, 
                 letterRendering: true,
-                scrollY: 0
+                windowWidth: 800
             },
             jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
             pagebreak:    { mode: ['css', 'legacy'] }
         };
 
-        html2pdf().set(opt).from(element).save().then(() => {
-            element.classList.remove('pdf-render-mode');
-            button.classList.remove('no-export');
+        // 8. Generate & cleanup
+        html2pdf().set(opt).from(clone).save().then(() => {
+            document.body.removeChild(container);
+        }).catch(err => {
+            console.error('PDF Generation Error:', err);
+            document.body.removeChild(container);
         });
     }
 </script>
