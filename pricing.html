@@ -6,12 +6,12 @@
   <title>Pricing & Packages | Barclay Massage & Wellness</title>
   <style>
     :root {
-      --steel: #231b17; /* Deep walnut base */
+      --steel: #111111; /* Deep matte black matching card emblem */
       --text-dark: #2d3748;
-      --bg-dark: #19120f; /* Warm dark-walnut backdrop matching home */
-      --card-bg: #2d231e; /* Warm mid-tone walnut for cards */
-      --border-light: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(255, 255, 255, 0.3);
+      --bg-dark: #19120f; /* Rich dark-walnut wood backdrop */
+      --card-bg: #161616; /* Solid matte black for inner card elements */
+      --border-light: rgba(255, 255, 255, 0.15); /* High contrast white border accent */
+      --border-hover: rgba(255, 255, 255, 0.4);
     }
 
     body {
@@ -40,17 +40,16 @@
       margin: 0 auto;
     }
 
-    /* Structured reading panel for the main header text */
+    /* Structured Header Box - Solid Matte Black Panel */
     .pricing-header {
       text-align: center;
-      margin-bottom: 40px;
-      background: rgba(35, 27, 23, 0.85); /* Dark walnut backing with blur */
+      margin-bottom: 30px;
+      background: #080808;
       background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
-      backdrop-filter: blur(4px);
       border: 1px solid var(--border-light);
       padding: 35px 25px;
       border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
     }
 
     .pricing-header h1 {
@@ -70,16 +69,16 @@
       line-height: 1.6;
     }
 
-    /* Solid dark backing panel with distinct borders for the promo text */
+    /* High-Contrast Special Banner Box - Matte Black */
     .intro-banner {
-      background: rgba(35, 27, 23, 0.95);
+      background: #080808;
       background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
-      border: 1px dashed rgba(255, 255, 255, 0.25);
+      border: 1px dashed rgba(255, 255, 255, 0.3);
       padding: 25px;
       border-radius: 10px;
       margin-bottom: 40px;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
     }
 
     .intro-banner h3 {
@@ -103,13 +102,13 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
       align-items: start;
     }
 
-    /* Individual Card Styling */
+    /* Individual Card Styling - Deep Obsidian / Black */
     .price-card {
-      background: var(--steel);
+      background: #080808;
       background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
       border: 1px solid var(--border-light);
       border-radius: 12px;
@@ -117,21 +116,21 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
       transition: all 0.2s ease-in-out;
     }
 
     .price-card:hover {
       transform: translateY(-5px);
       border-color: var(--border-hover);
-      box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+      box-shadow: 0 25px 45px rgba(0,0,0,0.8);
     }
 
-    /* High-Priority / Highlighted Card Style - Sleek White Border Framed Accent */
+    /* High-Priority / Highlighted Card Style - Framed Bright Accent Border */
     .price-card.popular {
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      background: var(--steel);
+      background: #0d0d0d;
       background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
+      border: 2px solid rgba(255, 255, 255, 0.4);
     }
 
     .price-card.popular:hover {
@@ -144,14 +143,14 @@
       left: 50%;
       transform: translateX(-50%);
       background-color: #ffffff;
-      color: var(--bg-dark);
+      color: #000000;
       padding: 5px 14px;
       font-size: 0.75rem;
       font-weight: 900;
       border-radius: 20px;
       text-transform: uppercase;
       letter-spacing: 1px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
 
     /* Card Typography & Content */
@@ -178,8 +177,9 @@
       padding: 22px 0;
       margin-bottom: 25px;
       text-align: center;
-      background: rgba(0,0,0,0.2);
+      background: #141414;
       border-radius: 6px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .price {
@@ -225,9 +225,9 @@
       border-bottom: none;
     }
 
-    /* Policy Section Styling */
+    /* Policy Section Styling - Matte Black Box */
     .pricing-policies {
-      background: rgba(35, 27, 23, 0.7);
+      background: #080808;
       background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
       border: 1px solid var(--border-light);
       border-radius: 10px;
@@ -235,7 +235,7 @@
       max-width: 750px;
       margin: 0 auto;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
     }
 
     .pricing-policies h2 {
