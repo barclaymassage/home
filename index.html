@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barclay Massage & Wellness | Port Orange Recovery</title>
+    <!-- Google Font Import -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap">
     <style>
         :root {
-            --steel: #231b17; /* Deep, premium walnut trunk base */
-            --text-dark: #2d3748;
+            --steel: #111111; /* Deep matte black matching card badge */
             --bg-dark: #19120f; /* Rich, warm dark-walnut backdrop */
-            --card-bg: #2d231e; /* Warm mid-tone walnut for buttons */
-            --border-light: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(255, 255, 255, 0.3);
+            --card-bg: #161616; /* Solid matte black for action cards */
+            --border-light: rgba(255, 255, 255, 0.15); /* High contrast white border accent */
+            --border-hover: rgba(255, 255, 255, 0.4);
         }
 
         body { 
@@ -31,25 +32,22 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 1. HEADER STRIP */
+        /* 1. HEADER STRIP (Static top bar) */
         header {
-            background: rgba(35, 27, 23, 0.96);
-            border-bottom: 1px solid var(--border-light);
+            background: #0d0d0d;
+            border-bottom: 2px solid var(--border-light);
             padding: 25px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
         }
 
         .biz-logo { 
             width: 100%;
             max-width: 320px; 
             height: auto;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
         }
 
         /* MAIN CONTAINER FOR STRIPS */
@@ -57,24 +55,100 @@
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 30px 20px;
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 30px;
             box-sizing: border-box;
             animation: fadeIn 0.8s ease-out;
         }
 
-        /* 2. BIO STRIP (HORIZONTAL SPLIT) */
+        /* 2. TOP ACTION STRIP (PRIMARY NAVIGATION) */
+        .action-strip-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            padding: 20px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .contact-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-3px);
+            background: #222222;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+        }
+
+        /* High-priority booking button - Solid contrast black box */
+        .booking-live {
+            border-color: rgba(255, 255, 255, 0.35);
+            background: #0a0a0a;
+        }
+        
+        .booking-live:hover {
+            border-color: #ffffff;
+            background: #1a1a1a;
+        }
+
+        .icon { 
+            font-size: 22px; 
+            background: rgba(255, 255, 255, 0.06); 
+            padding: 10px; 
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .contact-label {
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .contact-subtext {
+            font-size: 12px;
+            color: #94a3b8;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .booking-live .contact-subtext { 
+            color: #ffffff; 
+            font-weight: 700; 
+        }
+
+        /* 3. BIO STRIP (EMBLEM BADGE INSPIRED) */
         .bio-strip {
             display: flex;
             background: var(--steel);
-            background-image: url("https://www.transparenttextures.com/patterns/black-linen-2.png");
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
             align-items: stretch;
-            border: 1px solid var(--border-light);
+            border: 2px solid var(--border-light);
         }
 
         .photo-column {
@@ -84,7 +158,8 @@
             justify-content: center;
             align-items: center;
             padding: 40px;
-            background: rgba(0,0,0,0.25);
+            background: #080808;
+            border-right: 1px solid var(--border-light);
         }
 
         .lmt-photo { 
@@ -93,9 +168,9 @@
             height: auto; 
             border-radius: 8px;
             object-fit: cover; 
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             padding: 5px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6);
         }
 
         .text-column {
@@ -104,32 +179,32 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            background: #111111;
         }
 
         .bio-text-box {
-            background: rgba(25, 18, 15, 0.55);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #080808;
+            border: 1px solid var(--border-light);
             padding: 35px;
             border-radius: 10px;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
         }
 
+        /* Header matching card tagline typography */
         .bio-header {
-            font-size: 28px;
-            font-weight: 900;
+            font-size: 26px;
+            font-weight: 800;
             color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: -0.5px;
+            letter-spacing: 1.5px;
             margin: 0 0 15px 0;
             border-left: 4px solid #ffffff;
             padding-left: 18px;
         }
 
         .promo-badge {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px dashed rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px dashed rgba(255, 255, 255, 0.3);
             color: #f1f5f9;
             padding: 10px 14px;
             border-radius: 8px;
@@ -148,92 +223,11 @@
             margin-bottom: 0;
         }
 
-        /* 3. BUTTONS STRIP (HORIZONTAL GRID) */
-        .action-strip {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-        }
-
-        .contact-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-light);
-            padding: 25px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: all 0.2s ease-in-out;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .contact-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-            background: #362a24;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-        }
-
-        /* High-priority booking button - Solid contrast box backing to lock text readability */
-        .booking-live {
-            border-color: rgba(255, 255, 255, 0.25);
-            background: rgba(25, 18, 15, 0.6);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-        }
-        
-        .booking-live:hover {
-            border-color: #ffffff;
-            background: rgba(25, 18, 15, 0.8);
-        }
-
-        .icon { 
-            font-size: 24px; 
-            margin-bottom: 15px; 
-            background: rgba(255, 255, 255, 0.03); 
-            padding: 12px; 
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .text-container {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .contact-label {
-            font-weight: 800;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #ffffff;
-        }
-
-        .contact-subtext {
-            font-size: 13px;
-            color: #94a3b8;
-            font-weight: 500;
-            line-height: 1.4;
-        }
-
-        .booking-live .contact-subtext { 
-            color: #ffffff; 
-            font-weight: 700; 
-        }
-
-        /* 4. FOOTER STRIP */
+        /* 4. FOOTER / CONTACT STRIP */
         footer {
             margin-top: auto;
-            background: #120c0a;
-            padding: 30px 20px;
+            background: #080808;
+            padding: 35px 20px;
             text-align: center;
             font-size: 11px; 
             color: #718096; 
@@ -243,29 +237,45 @@
             border-top: 1px solid var(--border-light);
         }
 
+        .footer-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-btn {
+            color: #ffffff;
+            background: #161616;
+            border: 1px solid var(--border-light);
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+
+        .footer-btn:hover {
+            border-color: #ffffff;
+            background: #222222;
+        }
+
         .address-link { color: #cbd5e1; text-decoration: none; font-weight: 700; }
         .address-link:hover { text-decoration: underline; color: #ffffff; }
 
         /* Responsive Optimization */
         @media (max-width: 950px) {
+            .action-strip-top { grid-template-columns: 1fr; gap: 12px; }
             .bio-strip { flex-direction: column; text-align: center; align-items: center; }
-            .photo-column { max-width: 100%; width: 100%; box-sizing: border-box; padding: 30px 0 0 0; background: none;}
+            .photo-column { max-width: 100%; width: 100%; box-sizing: border-box; padding: 30px 0; background: #080808; border-right: none; border-bottom: 1px solid var(--border-light); }
             .lmt-photo { max-width: 180px; }
             .text-column { padding: 20px; width: 100%; box-sizing: border-box; }
             .bio-text-box { padding: 25px 20px; }
             .bio-header { border-left: none; padding-left: 0; }
             .promo-badge { justify-content: center; }
-            
-            .action-strip { grid-template-columns: 1fr; gap: 12px; }
-            .contact-card { 
-                flex-direction: row; 
-                text-align: left; 
-                padding: 16px 20px; 
-                align-items: center;
-                justify-content: flex-start;
-            }
-            .icon { margin-bottom: 0; margin-right: 20px; }
-            .text-container { gap: 2px; }
         }
     </style>
 </head>
@@ -277,30 +287,8 @@
 
 <div class="page-wrapper">
     
-    <!-- BIO STRIP WITH INTEGRATED TEXT READING BOX -->
-    <section class="bio-strip">
-        <div class="photo-column">
-            <img src="thomas-ahrensfeld.jpg" alt="Thomas 'Clay' Ahrensfeld, LMT" class="lmt-photo">
-        </div>
-        <div class="text-column">
-            <div class="bio-text-box">
-                <h1 class="bio-header">Clinical Recovery & Deep Tissue</h1>
-                
-                <div class="promo-badge">
-                    🏷️ <span>First-Time Clients: Save $20 on your initial session</span>
-                </div>
-
-                <p class="bio-text">
-                    Clay specializes in high-impact, clinical deep-tissue work and targeted trigger point recovery designed for individuals who take their training and physical longevity seriously. With a dual background as a Licensed Massage Therapist and a NASM Certified Personal Trainer, his approach bridges the gap between intense training volume and structural recovery.
-                    <br><br>
-                    Clay doesn’t offer generic, relaxing spa rubs. Every session at Barclay Massage & Wellness is specific, results-driven, and focused on breaking down structural restrictions—whether you are fighting hip flexor and adductor tightness from heavy lifting, recovering from high-volume bodybuilding splits, or managing chronic everyday tension. His goal is simple: eliminate soft-tissue restrictions so you can move, train, and recover at your absolute peak.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- HORIZONTAL BUTTONS GRID -->
-    <nav class="action-strip">
+    <!-- TOP PRIMARY ACTIONS -->
+    <nav class="action-strip-top">
         <a href="booking.html" class="contact-card booking-live">
             <div class="icon">📅</div>
             <div class="text-container">
@@ -317,22 +305,6 @@
             </div>
         </a>
 
-        <a href="mailto:barclaymassage@gmail.com?subject=Booking Inquiry" class="contact-card">
-            <div class="icon">✉️</div>
-            <div class="text-container">
-                <span class="contact-label">Email Us</span>
-                <span class="contact-subtext">barclaymassage@gmail.com</span>
-            </div>
-        </a>
-
-        <a href="tel:4078672207" class="contact-card">
-            <div class="icon">📱</div>
-            <div class="text-container">
-                <span class="contact-label">Call / Text</span>
-                <span class="contact-subtext">(407) 867-2207</span>
-            </div>
-        </a>
-        
         <a href="intake.html" class="contact-card">
             <div class="icon">📋</div>
             <div class="text-container">
@@ -341,13 +313,42 @@
             </div>
         </a>
     </nav>
+
+    <!-- BIO STRIP WITH RESULTS DRIVEN RECOVERY TAGLINE -->
+    <section class="bio-strip">
+        <div class="photo-column">
+            <img src="thomas-ahrensfeld.jpg" alt="Thomas 'Clay' Ahrensfeld, LMT" class="lmt-photo">
+        </div>
+        <div class="text-column">
+            <div class="bio-text-box">
+                <h1 class="bio-header">Results Driven Recovery</h1>
+                
+                <div class="promo-badge">
+                    🏷️ <span>First-Time Clients: Save $20 on your initial session</span>
+                </div>
+
+                <p class="bio-text">
+                    Clay specializes in high-impact, clinical deep-tissue work and targeted trigger point recovery designed for individuals who take their training and physical longevity seriously. With a dual background as a Licensed Massage Therapist and a NASM Certified Personal Trainer, his approach bridges the gap between intense training volume and structural recovery.
+                    <br><br>
+                    Clay doesn’t offer generic, relaxing spa rubs. Every session at Barclay Massage & Wellness is specific, results-driven, and focused on breaking down structural restrictions—whether you are fighting hip flexor and adductor tightness from heavy lifting, recovering from high-volume bodybuilding splits, or managing chronic everyday tension. His goal is simple: eliminate soft-tissue restrictions so you can move, train, and recover at your absolute peak.
+                </p>
+            </div>
+        </div>
+    </section>
+
 </div>
 
 <footer>
+    <!-- DIRECT CONTACT OPTIONS -->
+    <div class="footer-contacts">
+        <a href="tel:4078672207" class="footer-btn">📱 Call / Text: (407) 867-2207</a>
+        <a href="mailto:barclaymassage@gmail.com?subject=Booking Inquiry" class="footer-btn">✉️ Email Us</a>
+    </div>
+
     <strong>THOMAS "CLAY" AHRENSFELD, LMT | MA 99692 | KNEAD CLAY LLC</strong><br>
     <span style="font-size: 10px; color: #4a5568; display: block; margin-bottom: 4px;">Serving Port Orange, Daytona Beach, and New Smyrna Beach</span>
     <a href="https://maps.google.com/?q=5889+S+Williamson+Blvd+Suite+1416+Port+Orange+FL+32128" 
-       target="_blank" class="address-link">
+       target="_blank" rel="noopener" class="address-link">
          5889 S Williamson Blvd, Suite 1416 &bull; Port Orange, FL 32128
     </a>
 </footer>
